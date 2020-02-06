@@ -19,5 +19,14 @@ class Employee extends Model
 	public function titles() {
 		return $this->hasMany('App\Title', 'emp_no'); 	
 	}
+	public function salary() {
+		return $this->hasOne('App\Salary', 'emp_no')->where('to_date', '>=', NOW());
+	}
+	public function title() {
+		return $this->hasOne('App\Title', 'emp_no')->where('to_date', '>=', NOW());
+	}
+	public function department() {
+		return $this->belongsToMany('App\Department', 'emp_no')->;
+	}
 
 }
