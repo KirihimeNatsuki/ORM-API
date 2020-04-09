@@ -26,7 +26,7 @@ class Employee extends Model
 		return $this->hasOne('App\Title', 'emp_no')->where('to_date', '>=', NOW());
 	}
 	public function department() {
-		return $this->belongsToMany('App\Department', 'emp_no')->;
+		return $this->belongsToMany('App\Department', 'emp_no')->where('to_date', '>=', NOW());
 	}
 
 }

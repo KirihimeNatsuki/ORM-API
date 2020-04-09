@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Employee;
 use Illuminate\Http\Request;
 
-class EmployeeApiController extends Controller
+class SalaryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,16 +14,17 @@ class EmployeeApiController extends Controller
      */
     public function index()
     {
-	    $r=response()->stream(function(){
-		      $handle= fopen('php://output','w');
-		      Employee:chunk(100, function($chunks) use($handle){
-			      foreach($chunks as chunk){
-				      //Ajouter le chunk au flux
-				      fputs($handle, json_encode($chunk));
-			      }
-		      });
-	    });
-	    return $r::paginate(100);
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -34,8 +35,7 @@ class EmployeeApiController extends Controller
      */
     public function store(Request $request)
     {
-        $e = Employee::create($request->all());
-	      return $e;
+        //
     }
 
     /**
@@ -46,7 +46,18 @@ class EmployeeApiController extends Controller
      */
     public function show(Employee $employee)
     {
-        return $employee;
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Employee  $employee
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Employee $employee)
+    {
+        //
     }
 
     /**
@@ -58,8 +69,7 @@ class EmployeeApiController extends Controller
      */
     public function update(Request $request, Employee $employee)
     {
-        $employee->update($request->all());
-	      return $employee;
+        //
     }
 
     /**
@@ -70,20 +80,6 @@ class EmployeeApiController extends Controller
      */
     public function destroy(Employee $employee)
     {
-	      $e = $employee;
-        $employee->delete();
-	      return $e;
+        //
     }
-
-    protected function validator(array $data)
-    {
-	    return Validator::make($data, [
-	      'first_name' => ['required', 'string', 'max:255'],
-	      'last_name'  => ['required', 'string', 'max:255'],
-	      'birth_date' => ['required', 'date_format:Y-m-d'],
-	      'hire_date'  => ['required', 'date'],
-	      'gender'     => ['required', 'string', 'max:1', 'min:1', 'regex:[MF]'],
-	    ]);
-    }
-
 }
