@@ -24,10 +24,10 @@ INSERT INTO `table` VALUES
     
 is turned into the following CSV:
 
-    | id   | item   | price |
-    | ---- |:------:| -----:|
-    | 0    | item_1 | 7.90  |
-    | 1    | item_2 | 2.50  |
+| id   | item   | price |
+| ---- |:------:| -----:|
+| 0    | item_1 | 7.90  |
+| 1    | item_2 | 2.50  |
 
 SQL file need to be similar to the example one !
 
